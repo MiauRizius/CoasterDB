@@ -1,4 +1,4 @@
-<img align="right" src="https://github.com/discord-jda/JDA/blob/assets/assets/readme/logo.png?raw=true" height="150" width="150">
+<!-- <img align="right" src="https://github.com/discord-jda/JDA/blob/assets/assets/readme/logo.png?raw=true" height="150" width="150"> -->
 
 # CoasterDB
 Roller coaster and amusement park database with web view as a project for the seminar subject s_Tec (Q1.2)

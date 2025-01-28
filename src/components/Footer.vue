@@ -26,7 +26,7 @@ export default {
                 </div>
                 <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Gemacht mit...</h2>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Made with...</h2>
                         <div class="text-gray-600 dark:text-gray-400 flex flex-row items-center flex-wrap">
                             <div class="mr-2">
                                 <a href="https://vuejs.org/" class="hover:underline"><Vue /></a>
@@ -52,6 +52,7 @@ export default {
                             -->
                         </ul>
                     </div>
+                    <!--
                     <div>
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Rechtliches</h2>
                         <ul class="text-gray-600 dark:text-gray-400">
@@ -63,11 +64,12 @@ export default {
                             </li>
                         </ul>
                     </div>
+                    -->
                 </div>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://miaurizius.de" class="hover:underline">Maurice-Pascal Larivière</a>. Alle Rechte vorbehalten
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://miaurizius.de" class="hover:underline">Maurice-Pascal Larivière</a>. Alle Rechte vorbehalten
                 </span>
                 <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                     <a href="https://instagram.com/miaurizius" target="_blank" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
