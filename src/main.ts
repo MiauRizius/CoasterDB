@@ -1,5 +1,13 @@
 import { createApp } from 'vue'
-import './style.css'
+import router from "./router";
 import App from './App.vue'
+import axios from 'axios';
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+axios.defaults.headers.common["Access-Control-Allow-Origin"] = '*';
+axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE';
+axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+
+app.use(router);
+app.mount('#app');
