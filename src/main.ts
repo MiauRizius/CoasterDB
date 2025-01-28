@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import router from "./router";
-import App from './App.vue'
+import Index from './Index.vue'
 import axios from 'axios';
 
-const app = createApp(App);
+const app = createApp(Index);
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = '*';
 axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE';

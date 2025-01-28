@@ -2,7 +2,7 @@
 import './assets/tailwind.css'
 
 export default {
-  name: 'App',
+  name: 'Index',
 }
 </script>
 

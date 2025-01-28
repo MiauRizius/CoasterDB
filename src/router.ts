@@ -1,15 +1,17 @@
 import { createWebHistory, createRouter } from "vue-router";
 import { type RouteRecordRaw } from "vue-router";
 
-import App from "./App.vue";
-import HomeVue from "./views/Home.vue";
-import NotFoundVue from "./views/NotFound.vue";
-
 const routes: Array<RouteRecordRaw> = [
     //Normal pages
     {
         path: '/',
-        component: HomeVue
+        component: () => import('./views/Home.vue')
+    },
+
+    //App
+    {
+        path: '/app',
+        component: () => import('./views/app/App.vue')
     },
 
     //Redirects
@@ -17,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
     //Congifuration
     {
         path: '/:pathMatch(.*)*',
-        component: NotFoundVue
+        component: () => import("./views/NotFound.vue")
     },
 ];
 
