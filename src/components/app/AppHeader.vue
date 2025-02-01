@@ -15,7 +15,7 @@ export default {
     <nav class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
       <div class="flex flex-wrap justify-between items-center">
         <div class="flex justify-start items-center">
-          <a href="#" class="flex items-center justify-between mr-4">
+          <a href="/" class="flex items-center justify-between mr-4">
             <img
               src="https://raw.githubusercontent.com/MaukiNet/.github/main/assets/4542221e59746b200f7d3d2c96cf9210.png"
               class="mr-3 h-8 rounded-full"
@@ -25,7 +25,7 @@ export default {
           </a>
           <form action="#" method="GET" class="hidden md:block md:pl-2">
             <label for="topbar-search" class="sr-only">Suchen</label>
-            <div class="relative md:w-64 md:w-96">
+            <div class="relative md:w-96">
               <div
                 class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
               >
