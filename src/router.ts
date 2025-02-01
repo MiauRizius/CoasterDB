@@ -7,6 +7,14 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         component: () => import('./views/Home.vue')
     },
+    {
+        path: '/docs',
+        component: () => import('./views/app/Documentation.vue')
+    },
+    {
+        path: '/help',
+        component: () => import('./views/app/Help.vue')
+    },
 
     //App
     {
@@ -16,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
 
     //Redirects
 
-    //Congifuration
+    //Configuration
     {
         path: '/:pathMatch(.*)*',
         component: () => import("./views/NotFound.vue")

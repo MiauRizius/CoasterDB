@@ -7,6 +7,18 @@ export default {
 
   },
   mounted() {
+    function processAjaxData(urlPath:string) {
+      window.history.pushState({"html":null,"pageTitle":document.title},"", urlPath);
+    }
+
+    document.getElementById("help")?.addEventListener("click", () => {
+      processAjaxData("/app/help")
+    });
+
+    document.getElementById("docs")?.addEventListener("click", () => {
+      processAjaxData("/app/docs")
+    });
+
     //Cats
     document.getElementById('dropdown-pages-button')?.addEventListener('click', () => {
       const button = document.getElementById('dropdown-pages-button');
@@ -18,6 +30,12 @@ export default {
         dropdown?.classList.add('hidden');
         button?.setAttribute('aria-expanded', 'false');
       }
+    });
+    document.getElementById("parks-side")?.addEventListener("click", () => {
+      processAjaxData("/app/parks")
+    });
+    document.getElementById("attractions-side")?.addEventListener("click", () => {
+      processAjaxData("/app/attractions")
     });
 
     //database
@@ -31,6 +49,12 @@ export default {
         dropdown?.classList.add('hidden');
         button?.setAttribute('aria-expanded', 'false');
       }
+    });
+    document.getElementById("stats-page")?.addEventListener("click", () => {
+      processAjaxData("/database/statistics")
+    });
+    document.getElementById("techstats-page")?.addEventListener("click", () => {
+      processAjaxData("/database/technical-information")
     });
 
     //last thing (outcommented)
@@ -216,7 +240,7 @@ export default {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/database/admin"
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >Admin-Panel</a
                 >
@@ -291,7 +315,7 @@ export default {
         >
           <li>
             <a
-              href="#"
+                id="docs"
               class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
             >
               <svg
@@ -313,7 +337,7 @@ export default {
           </li>
           <li>
             <a
-              href="#"
+                id="help"
               class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
             >
               <svg
