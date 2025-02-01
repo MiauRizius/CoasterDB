@@ -7,7 +7,7 @@ export default {
 
   },
   mounted() {
-    //Pages
+    //Cats
     document.getElementById('dropdown-pages-button')?.addEventListener('click', () => {
       const button = document.getElementById('dropdown-pages-button');
       const dropdown = document.getElementById("dropdown-pages");
@@ -20,7 +20,7 @@ export default {
       }
     });
 
-    //Sales
+    //database
     document.getElementById('dropdown-sales-button')?.addEventListener('click', () => {
       const button = document.getElementById('dropdown-sales-button');
       const dropdown = document.getElementById("dropdown-sales");
@@ -33,7 +33,7 @@ export default {
       }
     });
 
-    //Authentication
+    //last thing (outcommented)
     document.getElementById('dropdown-authentication-button')?.addEventListener('click', () => {
       const button = document.getElementById('dropdown-authentication-button');
       const dropdown = document.getElementById("dropdown-authentication");
@@ -334,7 +334,7 @@ export default {
           </li>
         </ul>
       </div>
-      <div
+<!--      <div
         class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20"
       >
         <a
@@ -380,6 +380,6 @@ export default {
           Settings page
           <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
-      </div>
+      </div>-->
     </aside>
 </template>
