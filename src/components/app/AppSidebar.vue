@@ -1,23 +1,55 @@
 <script lang="ts">
 
+
+
 export default {
     components: {
 
+    },
+    mounted() {
+      //Pages
+      document.getElementById('dropdown-pages-button')?.addEventListener('click', () => {
+        const button = document.getElementById('dropdown-pages-button');
+        const dropdown = document.getElementById("dropdown-pages");
+
+        if (dropdown?.classList.contains('hidden')) {
+          dropdown?.classList.remove('hidden');
+          button?.setAttribute('aria-expanded', 'true');
+        } else {
+          dropdown?.classList.add('hidden');
+          button?.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      //Sales
+      document.getElementById('dropdown-sales-button')?.addEventListener('click', () => {
+        const button = document.getElementById('dropdown-sales-button');
+        const dropdown = document.getElementById("dropdown-sales");
+
+        if (dropdown?.classList.contains('hidden')) {
+          dropdown?.classList.remove('hidden');
+          button?.setAttribute('aria-expanded', 'true');
+        } else {
+          dropdown?.classList.add('hidden');
+          button?.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      //Authentication
+      document.getElementById('dropdown-authentication-button')?.addEventListener('click', () => {
+        const button = document.getElementById('dropdown-authentication-button');
+        const dropdown = document.getElementById("dropdown-authentication");
+
+        if (dropdown?.classList.contains('hidden')) {
+          dropdown?.classList.remove('hidden');
+          button?.setAttribute('aria-expanded', 'true');
+        } else {
+          dropdown?.classList.add('hidden');
+          button?.setAttribute('aria-expanded', 'false');
+        }
+      });
     }
 }
-
-document.getElementById('pages-dropdown-button')?.addEventListener('click', () => {
-    const dropdown = document.getElementById('dropdown-pages');
-    const button = document.getElementById('pages-dropdown-button');
-
-    if (dropdown?.classList.contains('hidden')) {
-        dropdown?.classList.remove('hidden');
-        button?.setAttribute('aria-expanded', 'true');
-    } else {
-        dropdown?.classList.add('hidden');
-        button?.setAttribute('aria-expanded', 'false');
-    }
-});
 
 </script>
 
@@ -146,6 +178,7 @@ document.getElementById('pages-dropdown-button')?.addEventListener('click', () =
               class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-sales"
               data-collapse-toggle="dropdown-sales"
+              id="dropdown-sales-button"
             >
               <svg
                 aria-hidden="true"
@@ -234,6 +267,7 @@ document.getElementById('pages-dropdown-button')?.addEventListener('click', () =
               class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-authentication"
               data-collapse-toggle="dropdown-authentication"
+              id="dropdown-authentication-button"
             >
               <svg
                 aria-hidden="true"
