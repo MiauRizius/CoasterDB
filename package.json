@@ -10,6 +10,7 @@
     "api-backend": "cross-env TS_NODE_PROJECT=./api-backend/tsconfig.json node --loader ts-node/esm api-backend/src/index.ts"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "sqlite3": "^5.1.7",
     "vue": "^3.5.13"

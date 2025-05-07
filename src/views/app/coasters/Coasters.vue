@@ -9,12 +9,30 @@ export default {
     },
     data() {
         return {
-            coasters: [
-                { name: 'Blue Fire', park: 'Europa Park' },
-                { name: 'Taron', park: 'Phantasialand' },
-                { name: 'Silver Star', park: 'Europa Park' },
-                { name: 'Karacho', park: 'Erlebnispark Tripsdrill' }
-            ]
+            coasters: [] as { id: number; name: string; location: string; average_visitor_count: number; ticket_price: string, park_id: number, park_name?: string }[]
+        }
+    },
+    async mounted() {
+        try {
+            const response = await fetch('http://localhost:3000/api/coasters');
+            if (response.ok) {
+                const data = await response.json();
+                this.coasters = await Promise.all(data.map(async (coaster: { [x: string]: any; id: number; name: string; location: string; average_visitor_count: number; ticket_price: string, park_id: number }) => {
+                    // Hole den Parknamen anhand der park_id
+                    const parkResponse = await fetch(`http://localhost:3000/api/parks/${coaster.park_id}`);
+                    if (parkResponse.ok) {
+                        const parkData = await parkResponse.json();
+                        coaster.park_name = parkData.name; // Füge den Parknamen zum Coaster hinzu
+                    } else {
+                        console.error(`Fehler beim Laden des Parks mit ID ${coaster.park_id}`);
+                    }
+                    return coaster;
+                }));
+            } else {
+                console.error('Fehler beim Laden der Achterbahnen:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Fehler beim Abrufen der Achterbahnen:', error);
         }
     }
 }
@@ -34,23 +52,22 @@ export default {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
             <a
               v-for="coaster in coasters"
-              :key="coaster.name"
-              :href="`/app/coaster/${coaster.name.replace(' ', '_')}`"
+              :key="coaster.id"
+              :href="`/app/coaster/${coaster.id}`"
               class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg p-6 hover:shadow-lg transition-shadow"
             >
               <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 {{ coaster.name }}
               </h2>
               <p class="text-gray-700 dark:text-gray-300">
-                <span class="font-semibold">Park:</span> {{ coaster.park }}
+                <span class="font-semibold">Park:</span> {{ coaster.park_name || 'Unbekannt' }}
               </p>
             </a>
           </div>
         </div>
       </main>
     </div>
-  </template>
-  
+</template>
 
 <style scoped>
 </style>

@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import pathRoutes from './routes/parkRoutes.js';
 import coasterRoutes from './routes/coasterRoutes.js';
 
@@ -7,6 +8,8 @@ const port = 3000;
 
 // Middleware für JSON-Anfragen
 app.use(express.json());
+
+app.use(cors());
 
 // Routen hinzufügen
 app.use('/api/parks', pathRoutes);
