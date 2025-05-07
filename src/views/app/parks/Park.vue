@@ -9,20 +9,51 @@ export default {
   },
   data() {
     return {
-      park: {
-        name: 'Europa Park',
-        location: 'Rust, Deutschland',
-        averageVisitorsPerMonth: 450000,
-        averageTicketPrice: 57.5,
-        area: '95 Hektar',
-        openingYear: 1975
+      park: {} as {
+        name: string;
+        location: string;
+        averageVisitorsPerMonth: number;
+        averageTicketPrice: number;
+        area: string;
+        openingYear: number;
       },
-      coasters: [
-        { name: 'Silver Star' },
-        { name: 'Blue Fire Megacoaster' },
-        { name: 'Wodan Timburcoaster' },
-        { name: 'Eurosat - CanCan Coaster' }
-      ]
+      coasters: [] as { name: string, id: number }[]
+    }
+  },
+  async mounted() {
+    const parkId = this.$route.params.id; // Park ID aus der URL
+
+    try {
+      // Abrufen der Parkdaten
+      const parkResponse = await fetch(`http://localhost:3000/api/parks/${parkId}`);
+      if (parkResponse.ok) {
+        const parkData = await parkResponse.json();
+        this.park = {
+          name: parkData.name,
+          location: parkData.location,
+          averageVisitorsPerMonth: parkData.average_visitor_count,
+          averageTicketPrice: parkData.ticket_price,
+          area: parkData.area,
+          openingYear: parkData.opening_year
+        };
+      } else {
+        console.error('Fehler beim Laden des Parks:', parkResponse.statusText);
+      }
+
+      // Abrufen der Achterbahndaten
+      const coastersResponse = await fetch(`http://localhost:3000/api/coasters/p/${parkId}`);
+      if (coastersResponse.ok) {
+        const coastersData = await coastersResponse.json();
+        this.coasters = coastersData.map((coaster: { name: string, id: number }) => ({
+          name: coaster.name,
+          id: coaster.id
+        }));
+      } else {
+        console.error('Fehler beim Laden der Achterbahnen:', coastersResponse.statusText);
+      }
+
+    } catch (error) {
+      console.error('Fehler beim Abrufen der Daten:', error);
     }
   }
 }
@@ -49,11 +80,11 @@ export default {
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700 dark:text-gray-300 mt-4">
             <div>
               <span class="font-semibold">Ø Besucher / Monat:</span>
-              {{ park.averageVisitorsPerMonth.toLocaleString() }}
+              {{ park.averageVisitorsPerMonth }}
             </div>
             <div>
               <span class="font-semibold">Ø Ticketpreis:</span>
-              {{ park.averageTicketPrice.toFixed(2) }} €
+              {{ park.averageTicketPrice }} €
             </div>
             <div>
               <span class="font-semibold">Fläche:</span>
@@ -74,7 +105,7 @@ export default {
               v-for="coaster in coasters"
               :key="coaster.name"
               class="bg-white dark:bg-gray-800 shadow p-4 rounded-lg hover:shadow-lg transition-shadow"
-              :href="`/app/coaster/${coaster.name.replace(' ', '_')}`"
+              :href="`/app/coaster/${coaster.id}`"
             >
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ coaster.name }}</h3>
             </a>
@@ -84,7 +115,6 @@ export default {
     </main>
   </div>
 </template>
-
 
 <style scoped>
 </style>

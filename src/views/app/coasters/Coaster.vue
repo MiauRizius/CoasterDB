@@ -3,28 +3,63 @@ import Header from '../../../components/app/AppHeader.vue'
 import Sidebar from '../../../components/app/AppSidebar.vue'
 
 export default {
-    components: {
-        Header,
-        Sidebar
-    },
-    data() {
-        return {
-            coaster: {
-                name: "Blue Fire",
-                park: "Europa Park",
-                length: "1050 m",
-                height: "38 m",
-                speed: "100 km/h",
-                launch: "LSM-Launch",
-                inversions: 4,
-                duration: "2:30 min",
-                manufacturer: "MACK Rides",
-                opened: "2009"
-            }
-        };
+  components: {
+    Header,
+    Sidebar
+  },
+  data() {
+    return {
+      coaster: {
+        name: '',
+        park: '',
+        length: '',
+        height: '',
+        speed: '',
+        launch: '',
+        inversions: 0,
+        duration: '',
+        manufacturer: '',
+        opened: '',
+        video_key: '',
+        park_id: 0
+      }
+    };
+  },
+  async mounted() {
+    const coasterId = this.$route.params.id;
+
+    try {
+      // Coaster-Daten laden
+      const coasterRes = await fetch(`http://localhost:3000/api/coasters/${coasterId}`);
+      if (!coasterRes.ok) throw new Error('Fehler beim Laden des Coasters');
+      const coasterData = await coasterRes.json();
+
+      // Parkname holen
+      const parkRes = await fetch(`http://localhost:3000/api/parks/${coasterData.park_id}`);
+      if (!parkRes.ok) throw new Error('Fehler beim Laden des Parks');
+      const parkData = await parkRes.json();
+
+      this.coaster = {
+        name: coasterData.name,
+        park: parkData.name,
+        length: `${coasterData.length} m`,
+        height: `${coasterData.height} m`,
+        speed: `${coasterData.velocity} km/h`,
+        launch: coasterData.type,
+        inversions: coasterData.inversions,
+        duration: `${coasterData.duration} min`,
+        manufacturer: coasterData.manufacturer,
+        opened: `${coasterData.release_year}`,
+        video_key: coasterData.video_key,
+        park_id: coasterData.park_id
+      };
+    } catch (err) {
+      console.error(err);
     }
+  }
 };
 </script>
+
 
 <template>
     <title>{{ coaster.name }} - CoasterDB</title>
@@ -47,7 +82,7 @@ export default {
               <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
                 Park:
                 <span class="font-medium text-gray-900 dark:text-white">
-                  <a :href="`/app/park/${coaster.park.replace(' ', '_')}`">{{ coaster.park }}</a>
+                  <a :href="`/app/park/${coaster.park_id}`">{{ coaster.park }}</a>
                 </span>
               </p>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -75,7 +110,7 @@ export default {
                   <iframe 
                     width="560" 
                     height="315" 
-                    src="https://www.youtube.com/embed/P7m8SNRj_hI" 
+                    :src="`https://www.youtube.com/embed/${ coaster.video_key }`" 
                     title="Blue Fire On-Ride Video" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 

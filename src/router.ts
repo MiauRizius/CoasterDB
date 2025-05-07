@@ -36,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('./views/app/coasters/Coasters.vue')
     },
     {
-        path: '/app/coaster/:coasterId',
+        path: '/app/coaster/:id',
         component: () => import('./views/app/coasters/Coaster.vue')
     },
 
@@ -46,7 +46,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('./views/app/parks/Parks.vue')
     },
     {
-        path: '/app/park/:parkId',
+        path: '/app/park/:id',
         component: () => import('./views/app/parks/Park.vue')   
     },
 

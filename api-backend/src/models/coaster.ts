@@ -11,6 +11,15 @@ export const getCoasters = (): Promise<any[]> => {
   });
 };
 
+export const getCoastersByPark = (id: number): Promise<any[]> => {
+  return new Promise((resolve, reject) => {
+    db.all("SELECT * FROM coasters WHERE park_id = ?", [id], (err, rows) => {
+      if (err) reject(err);
+      else resolve(rows);
+    });
+  });
+};
+
 export const getCoasterById = (id: number): Promise<any> => {
   return new Promise((resolve, reject) => {
     db.get("SELECT * FROM coasters WHERE id = ?", [id], (err, row) => {

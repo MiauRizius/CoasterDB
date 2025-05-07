@@ -9,12 +9,20 @@ export default {
     },
     data() {
         return {
-            parks: [
-                { name: 'Europa Park', location: 'Rust, Deutschland' },
-                { name: 'Phantasialand', location: 'Brühl, Deutschland' },
-                { name: 'Erlebnispark Tripsdrill', location: 'Cleebronn, Deutschland' },
-                { name: 'Heide Park', location: 'Soltau, Deutschland' }
-            ]
+            parks: [] as { id: number; name: string; location: string; average_visitor_count: number; ticket_price: string }[]
+        }
+    },
+    async mounted() {
+        try {
+            const response = await fetch('http://localhost:3000/api/parks');
+            if (response.ok) {
+                const data = await response.json();
+                this.parks = data;
+            } else {
+                console.error('Fehler beim Laden der Parks:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Fehler beim Abrufen der Parks:', error);
         }
     }
 }
@@ -35,8 +43,8 @@ export default {
             <a
               v-for="park in parks"
               :key="park.name"
+              :href="`/app/park/${park.id}`"
               class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg p-6 hover:shadow-lg transition-shadow"
-              :href="`/app/park/${park.name.replace(' ', '_')}`"
             >
               <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ park.name }}</h2>
               <p class="text-gray-700 dark:text-gray-300">
@@ -47,8 +55,7 @@ export default {
         </div>
       </main>
     </div>
-  </template>
-  
+</template>
 
 <style scoped>
 </style>
