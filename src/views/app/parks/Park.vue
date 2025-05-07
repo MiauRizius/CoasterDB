@@ -30,9 +30,14 @@ export default {
 
 <template>
   <title>{{ park.name }} - CoasterDB</title>
+
   <Header />
-  <div style="margin-top: 63px;">
-    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+
+  <div class="flex pt-[63px] h-screen overflow-hidden">
+    <Sidebar />
+
+    <main class="flex-1 overflow-y-auto p-5 bg-gray-50 dark:bg-gray-900">
+      <div style="margin-top: 63px;"></div>
       <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Park Info -->
         <div class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg p-6 mb-6">
@@ -42,10 +47,22 @@ export default {
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700 dark:text-gray-300 mt-4">
-            <div><span class="font-semibold">Ø Besucher / Monat:</span> {{ park.averageVisitorsPerMonth.toLocaleString() }}</div>
-            <div><span class="font-semibold">Ø Ticketpreis:</span> {{ park.averageTicketPrice.toFixed(2) }} €</div>
-            <div><span class="font-semibold">Fläche:</span> {{ park.area }}</div>
-            <div><span class="font-semibold">Eröffnet:</span> {{ park.openingYear }}</div>
+            <div>
+              <span class="font-semibold">Ø Besucher / Monat:</span>
+              {{ park.averageVisitorsPerMonth.toLocaleString() }}
+            </div>
+            <div>
+              <span class="font-semibold">Ø Ticketpreis:</span>
+              {{ park.averageTicketPrice.toFixed(2) }} €
+            </div>
+            <div>
+              <span class="font-semibold">Fläche:</span>
+              {{ park.area }}
+            </div>
+            <div>
+              <span class="font-semibold">Eröffnet:</span>
+              {{ park.openingYear }}
+            </div>
           </div>
         </div>
 
@@ -56,18 +73,18 @@ export default {
             <a
               v-for="coaster in coasters"
               :key="coaster.name"
-              class="bg-white dark:bg-gray-800 shadow p-4 rounded-lg"
+              class="bg-white dark:bg-gray-800 shadow p-4 rounded-lg hover:shadow-lg transition-shadow"
               :href="`/app/coaster/${coaster.name.replace(' ', '_')}`"
             >
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ coaster.name }}</h3>
-          </a>
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </main>
   </div>
-  <Sidebar />
 </template>
+
 
 <style scoped>
 </style>

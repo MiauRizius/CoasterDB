@@ -38,24 +38,24 @@ export default {
       }
     }
 
-  // Reiterzustand wiederherstellen
-  restoreDropdownState('dropdown-pages-button', 'dropdown-pages', 'dropdown-pages-open');
-  restoreDropdownState('dropdown-sales-button', 'dropdown-sales', 'dropdown-sales-open');
+    // Reiterzustand wiederherstellen
+    restoreDropdownState('dropdown-pages-button', 'dropdown-pages', 'dropdown-pages-open');
+    restoreDropdownState('dropdown-sales-button', 'dropdown-sales', 'dropdown-sales-open');
     restoreDropdownState('dropdown-authentication-button', 'dropdown-authentication', 'dropdown-authentication-open');
-    
+
     // Reiter-Click-Handler
     document.getElementById('dropdown-pages-button')?.addEventListener('click', () => {
       toggleDropdown('dropdown-pages-button', 'dropdown-pages', 'dropdown-pages-open');
     });
-  
+
     document.getElementById('dropdown-sales-button')?.addEventListener('click', () => {
       toggleDropdown('dropdown-sales-button', 'dropdown-sales', 'dropdown-sales-open');
     });
-  
+
     document.getElementById('dropdown-authentication-button')?.addEventListener('click', () => {
       toggleDropdown('dropdown-authentication-button', 'dropdown-authentication', 'dropdown-authentication-open');
     });
-  
+
     // Navigation
     document.getElementById("help")?.addEventListener("click", () => {
       processAjaxData("/app/help")
@@ -226,18 +226,19 @@ export default {
             <ul id="dropdown-sales" class="hidden py-2 space-y-2">
               <li>
                 <a
-                  href="/stats"
+                  href="/app/stats"
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >Statistiken</a
                 >
               </li>
               <li>
                 <a
-                  href="/technical-information"
+                  href="/app/technical-information"
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >Technische Infos</a
                 >
               </li>
+              <!--
               <li>
                 <a
                   href="/database/admin"
@@ -245,6 +246,7 @@ export default {
                   >Admin-Panel</a
                 >
               </li>
+              -->
             </ul>
           </li>
 <!--          <li>

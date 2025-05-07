@@ -40,7 +40,7 @@ export default {
                         </div>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Soziale Medien</h2>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Repository</h2>
                         <ul class="text-gray-600 dark:text-gray-400">
                             <li class="mb-4">
                                 <a href="https://github.com/MiauRizius/CoasterDB" target="_blank" class="hover:underline ">GitHub</a>

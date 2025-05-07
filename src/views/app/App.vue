@@ -1,4 +1,5 @@
 <script lang="ts">
+
 /**
  * 
  * use this for template:
@@ -52,14 +53,21 @@ export default {
 </script>
 
 <template>
-    <title>App - CoasterDB</title>
-    <Header />
+  <title>App - CoasterDB</title>
 
-    <!-- Neue Anleitung -->
-    <div style="margin-top: 63px;">
-    <section class="dark:bg-gray-900 sm:p-10">
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
-            <h2 class="text-2xl font-semibold mb-4">Willkommen auf CoasterDB!</h2>
+  <!-- Fester Header -->
+  <Header />
+
+  <!-- Flex-Layout für Sidebar + Hauptinhalt -->
+  <div class="flex pt-[63px] h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <Sidebar />
+
+    <!-- Hauptinhalt -->
+    <main class="flex-1 overflow-y-auto p-10 bg-gray-900 text-white">
+      <div style="margin-top: 63px;"></div>
+      <section class="max-w-4xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold mb-4">Willkommen auf CoasterDB!</h2>
             <p class="mb-6 text-lg">
                 Um mit CoasterDB zu arbeiten, kannst du in der Sidebar unter <strong>Kategorien -> Parks/Attraktionen</strong> wählen, um Informationen zu verschiedenen Freizeitparks und deren Attraktionen zu erhalten.
                 Wähle einfach den gewünschten Park oder die Attraktion aus, um mehr Details zu sehen!
@@ -67,10 +75,7 @@ export default {
             <p class="text-lg">
                 Viel Spaß beim Entdecken der spannendsten Freizeitparks und Achterbahnen!
             </p>
-        </div>
-    </section>
-    </div>
-
-    <!-- Sidebar -->
-    <Sidebar />
+      </section>
+    </main>
+  </div>
 </template>
