@@ -32,6 +32,16 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('./views/app/coasters/Coaster.vue')
     },
 
+    //Park pages
+    {
+        path: '/app/parks',
+        component: () => import('./views/app/parks/Parks.vue')
+    },
+    {
+        path: '/app/park/:parkId',
+        component: () => import('./views/app/parks/Park.vue')   
+    },
+
     //Redirects
 
     //Configuration
