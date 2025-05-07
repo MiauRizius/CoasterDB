@@ -3,23 +3,42 @@ import Header from '../components/app/AppHeader.vue'
 import Sidebar from '../components/app/AppSidebar.vue'
 
 export default {
-    components: {
-        Header,
-        Sidebar
-    },
-    data() {
-        return {
-            stats: {
-                totalParks: 10,
-                totalCoasters: 25,
-                totalVisitorsPerMonth: 500000,
-                averageTicketPrice: 45.99,
-                totalInversions: 120
-            }
-        }
+  components: {
+    Header,
+    Sidebar
+  },
+  data() {
+    return {
+      stats: {
+        totalParks: 0,
+        totalCoasters: 0,
+        totalVisitorsPerMonth: 500000, // bleibt statisch, da nicht aus API
+        averageTicketPrice: 45.99,     // bleibt statisch, da nicht aus API
+        totalInversions: 0
+      }
+    };
+  },
+  async mounted() {
+    try {
+      // Parks abrufen
+      const parksRes = await fetch('http://localhost:3000/api/parks');
+      const parks = await parksRes.json();
+      this.stats.totalParks = parks.length;
+
+      // Coaster abrufen
+      const coastersRes = await fetch('http://localhost:3000/api/coasters');
+      const coasters = await coastersRes.json();
+      this.stats.totalCoasters = coasters.length;
+
+      // Summe der Inversionen berechnen
+      this.stats.totalInversions = coasters.reduce((sum: number, coaster: any) => sum + coaster.inversions, 0);
+    } catch (err) {
+      console.error('Fehler beim Laden der Statistiken:', err);
     }
-}
+  }
+};
 </script>
+
 
 <template>
   <title>Datenbank-Statistiken - CoasterDB</title>
