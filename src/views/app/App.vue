@@ -26,9 +26,13 @@ export default {
         Help
     },
   mounted() {
+    var current_page = "";
     setInterval(() => {
       const docs = document.getElementById("docs-container");
       const help = document.getElementById("docs-container");
+
+      if (current_page == window.location.href.replace("https://", "").split("/")[4]) return;
+      current_page = window.location.href.replace("https://", "").split("/")[4];
 
       switch (window.location.href.replace("https://", "").split("/")[4]) {
         case "docs":
@@ -51,11 +55,11 @@ export default {
 <template>
     <title>App - CoasterDB</title>
     <Header />
-    
+    <!--
     <section class="dark:bg-gray-900 sm:p-60">
       <Documentation id="docs-container" class="hidden" />
       <Help id="help-container" class="hidden" />
     </section>
-
+-->
     <Sidebar />
 </template>
