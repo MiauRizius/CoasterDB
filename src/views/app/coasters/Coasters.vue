@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template>
-    <title>Coaster Übersicht – CoasterDB</title>
+    <title>Coaster Übersicht - CoasterDB</title>
     <Header />
     <div style="margin-top: 63px;">
         <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">

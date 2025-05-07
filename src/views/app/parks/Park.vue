@@ -53,13 +53,14 @@ export default {
         <div>
           <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Achterbahnen in diesem Park:</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div
+            <a
               v-for="coaster in coasters"
               :key="coaster.name"
               class="bg-white dark:bg-gray-800 shadow p-4 rounded-lg"
+              :href="`/app/coaster/${coaster.name.replace(' ', '_')}`"
             >
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ coaster.name }}</h3>
-            </div>
+          </a>
           </div>
         </div>
       </div>
