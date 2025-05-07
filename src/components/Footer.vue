@@ -45,26 +45,8 @@ export default {
                             <li class="mb-4">
                                 <a href="https://github.com/MiauRizius/CoasterDB" target="_blank" class="hover:underline ">GitHub</a>
                             </li>
-                            <!--
-                            <li>
-                                <a href="https://discord.gg/7fVXR2g7DG" target="_blank" class="hover:underline">Discord</a>
-                            </li>
-                            -->
                         </ul>
                     </div>
-                    <!--
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Rechtliches</h2>
-                        <ul class="text-gray-600 dark:text-gray-400">
-                            <li class="mb-4">
-                                <a href="#" class="hover:underline">Hier könnte was stehe, tut's aber nicht</a>
-                            </li>
-                            <li>
-                                <a href="#" class="hover:underline">Gleiches gilt hier</a>
-                            </li>
-                        </ul>
-                    </div>
-                    -->
                 </div>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />

@@ -12,30 +12,42 @@ export default {
       stats: {
         totalParks: 0,
         totalCoasters: 0,
-        totalVisitorsPerMonth: 500000, // bleibt statisch, da nicht aus API
-        averageTicketPrice: 45.99,     // bleibt statisch, da nicht aus API
-        totalInversions: 0
+        totalVisitorsPerMonth: 0,
+        averageTicketPrice: 0,
+        totalInversions: 0,
+        databaseSize: 0
       }
     };
   },
   async mounted() {
-    try {
-      // Parks abrufen
-      const parksRes = await fetch('http://localhost:3000/api/parks');
-      const parks = await parksRes.json();
-      this.stats.totalParks = parks.length;
+  try {
+    const parksRes = await fetch('http://localhost:3000/api/parks');
+    const parks = await parksRes.json();
+    this.stats.totalParks = parks.length;
 
-      // Coaster abrufen
-      const coastersRes = await fetch('http://localhost:3000/api/coasters');
-      const coasters = await coastersRes.json();
-      this.stats.totalCoasters = coasters.length;
+    const totalVisitors = parks.reduce((sum: number, park: any) => sum + Number(park.average_visitor_count), 0);
+    this.stats.totalVisitorsPerMonth = Math.round(totalVisitors / parks.length);
 
-      // Summe der Inversionen berechnen
-      this.stats.totalInversions = coasters.reduce((sum: number, coaster: any) => sum + coaster.inversions, 0);
-    } catch (err) {
-      console.error('Fehler beim Laden der Statistiken:', err);
-    }
+    const totalPrice = parks.reduce((sum: number, park: any) => {
+      const price = parseFloat(park.ticket_price.replace('€', '').replace(',', '.'));
+      return sum + price;
+    }, 0);
+    this.stats.averageTicketPrice = parseFloat((totalPrice / parks.length).toFixed(2));
+
+    const coastersRes = await fetch('http://localhost:3000/api/coasters');
+    const coasters = await coastersRes.json();
+    this.stats.totalCoasters = coasters.length;
+    this.stats.totalInversions = coasters.reduce((sum: number, coaster: any) => sum + coaster.inversions, 0);
+
+    const sizeRes = await fetch('http://localhost:3000/api/filesize');
+    const size = await sizeRes.json();
+    this.stats.databaseSize = size.sizeMB;
+
+  } catch (err) {
+    console.error('Fehler beim Laden der Statistiken:', err);
   }
+}
+
 };
 </script>
 
@@ -75,6 +87,10 @@ export default {
             <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm">
               <p class="text-gray-600 dark:text-gray-300">Anzahl der Inversionen:</p>
               <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ stats.totalInversions }}</p>
+            </div>
+            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+              <p class="text-gray-600 dark:text-gray-300">Größe der Datenbank:</p>
+              <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ stats.databaseSize }} MB</p>
             </div>
           </div>
         </div>

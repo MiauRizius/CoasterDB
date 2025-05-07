@@ -1,18 +1,7 @@
 <script lang="ts">
 
-/**
- * 
- * use this for template:
- * https://flowbite.com/blocks/
- * https://flowbite.com/blocks/marketing/blog/
- * https://flowbite.com/blocks/application/advanced-tables/
- * 
- */
-
 import Header from '../../components/app/AppHeader.vue'
 import Sidebar from '../../components/app/AppSidebar.vue'
-import ListItem from '../../components/app/ListItem.vue'
-import Entry from '../../components/app/Entry.vue'
 import Documentation from "../../views/app/Documentation.vue"
 import Help from "../../views/app/Help.vue"
 
@@ -20,8 +9,6 @@ export default {
     components: {
         Header,
         Sidebar,
-        ListItem,
-        Entry,
         Documentation,
         Help
     },

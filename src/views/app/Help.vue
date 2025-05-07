@@ -1,14 +1,5 @@
 <script lang="ts">
 
-/**
- * 
- * use this for template:
- * https://flowbite.com/blocks/
- * https://flowbite.com/blocks/marketing/blog/
- * https://flowbite.com/blocks/application/advanced-tables/
- * 
- */
-
 import Header from '../../components/app/AppHeader.vue'
 import Sidebar from '../../components/app/AppSidebar.vue'
 
