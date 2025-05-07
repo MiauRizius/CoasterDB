@@ -7,14 +7,6 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         component: () => import('./views/Home.vue')
     },
-    {
-        path: '/docs',
-        component: () => import('./views/app/Documentation.vue')
-    },
-    {
-        path: '/help',
-        component: () => import('./views/app/Help.vue')
-    },
 
     //App
     {
@@ -28,6 +20,14 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/app/technical-information',
         component: () => import('./views/TechnicalInformation.vue')
+    },
+    {
+        path: '/app/docs',
+        component: () => import('./views/app/Documentation.vue')
+    },
+    {
+        path: '/app/help',
+        component: () => import('./views/app/Help.vue')
     },
 
     //Coaster pages
