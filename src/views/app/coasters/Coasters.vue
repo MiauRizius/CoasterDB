@@ -27,12 +27,12 @@ export default {
         <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
             <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-                    <div v-for="coaster in coasters" :key="coaster.name" class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg p-6">
+                    <a v-for="coaster in coasters" :key="coaster.name" class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg p-6" :href="`/app/coaster/${coaster.name.replace(' ', '_')}`">
                         <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ coaster.name }}</h2>
                         <p class="text-gray-700 dark:text-gray-300">
                             <span class="font-semibold">Park:</span> {{ coaster.park }}
                         </p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>

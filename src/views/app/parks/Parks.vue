@@ -27,12 +27,12 @@ export default {
         <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
             <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-                    <div v-for="park in parks" :key="park.name" class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg p-6">
+                    <a v-for="park in parks" :key="park.name" class="bg-white dark:bg-gray-800 shadow-md sm:rounded-lg p-6" :href="`/app/park/${park.name.replace(' ', '_')}`">
                         <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ park.name }}</h2>
                         <p class="text-gray-700 dark:text-gray-300">
                             <span class="font-semibold">Ort:</span> {{ park.location }}
                         </p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
