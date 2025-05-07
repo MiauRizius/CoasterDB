@@ -1,6 +1,6 @@
-import * as express from 'express';
-import pathRoutes from './routes/parkRoutes';
-import coasterRoutes from './routes/coasterRoutes';
+import express from 'express';
+import pathRoutes from './routes/parkRoutes.js';
+import coasterRoutes from './routes/coasterRoutes.js';
 
 const app = express();
 const port = 3000;

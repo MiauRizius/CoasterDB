@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getParks, getParkById } from '../models/park';
+import { getParks, getParkById } from '../models/park.js';
 
 const router = Router();
 
@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
     const parks = await getParks();
     res.json(parks);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Fehler beim Abrufen der Parks:', err);
+    res.status(500).json({ message: 'Fehler beim Abrufen der Parks' });
   }
 });
 
@@ -24,7 +25,8 @@ router.get('/:id', async (req, res) => {
       res.status(404).json({ message: 'Park nicht gefunden' });
     }
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Fehler beim Abrufen des Parks:', err);
+    res.status(500).json({ message: 'Fehler beim Abrufen des Parks' });
   }
 });
 

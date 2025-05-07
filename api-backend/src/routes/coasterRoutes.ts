@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getCoasters, getCoasterById } from '../models/coaster';
+import { getCoasters, getCoasterById } from '../models/coaster.js';
 
 const router = Router();
 
@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
     const coasters = await getCoasters();
     res.json(coasters);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Fehler beim Abrufen der Achterbahnen:', err);
+    res.status(500).json({ message: 'Fehler beim Abrufen der Achterbahnen' });
   }
 });
 
@@ -24,7 +25,7 @@ router.get('/:id', async (req, res) => {
       res.status(404).json({ message: 'Achterbahn nicht gefunden' });
     }
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    
   }
 });
 

@@ -1,6 +1,6 @@
 import sqlite3 from 'sqlite3';
 
-const db = new sqlite3.Database('./coasterdb.sqlite3');
+const db = new sqlite3.Database('./database.db');
 
 export const getParks = (): Promise<any[]> => {
   return new Promise((resolve, reject) => {
