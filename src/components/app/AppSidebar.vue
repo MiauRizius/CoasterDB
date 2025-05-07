@@ -1,7 +1,5 @@
 <script lang="ts">
 
-
-
 export default {
   components: {
 
@@ -11,63 +9,65 @@ export default {
       window.history.pushState({"html":null,"pageTitle":document.title},"", urlPath);
     }
 
-    document.getElementById("help")?.addEventListener("click", () => {
-      processAjaxData("/app/help")
-    });
+    function toggleDropdown(buttonId: string, dropdownId: string, storageKey: string) {
+      const button = document.getElementById(buttonId);
+      const dropdown = document.getElementById(dropdownId);
+      const current = dropdown?.classList.contains('hidden');
 
-    document.getElementById("docs")?.addEventListener("click", () => {
-      processAjaxData("/app/docs")
-    });
+      if (current) {
+        dropdown?.classList.remove('hidden');
+        button?.setAttribute('aria-expanded', 'true');
+        sessionStorage.setItem(storageKey, 'true');
+      } else {
+        dropdown?.classList.add('hidden');
+        button?.setAttribute('aria-expanded', 'false');
+        sessionStorage.setItem(storageKey, 'false');
+      }
+    }
 
-    //Cats
-    document.getElementById('dropdown-pages-button')?.addEventListener('click', () => {
-      const button = document.getElementById('dropdown-pages-button');
-      const dropdown = document.getElementById("dropdown-pages");
-      if (dropdown?.classList.contains('hidden')) {
+    function restoreDropdownState(buttonId: string, dropdownId: string, storageKey: string) {
+      const button = document.getElementById(buttonId);
+      const dropdown = document.getElementById(dropdownId);
+      const savedState = sessionStorage.getItem(storageKey);
+      if (savedState === 'true') {
         dropdown?.classList.remove('hidden');
         button?.setAttribute('aria-expanded', 'true');
       } else {
         dropdown?.classList.add('hidden');
         button?.setAttribute('aria-expanded', 'false');
       }
+    }
+
+  // Reiterzustand wiederherstellen
+  restoreDropdownState('dropdown-pages-button', 'dropdown-pages', 'dropdown-pages-open');
+  restoreDropdownState('dropdown-sales-button', 'dropdown-sales', 'dropdown-sales-open');
+    restoreDropdownState('dropdown-authentication-button', 'dropdown-authentication', 'dropdown-authentication-open');
+    
+    // Reiter-Click-Handler
+    document.getElementById('dropdown-pages-button')?.addEventListener('click', () => {
+      toggleDropdown('dropdown-pages-button', 'dropdown-pages', 'dropdown-pages-open');
+    });
+  
+    document.getElementById('dropdown-sales-button')?.addEventListener('click', () => {
+      toggleDropdown('dropdown-sales-button', 'dropdown-sales', 'dropdown-sales-open');
+    });
+  
+    document.getElementById('dropdown-authentication-button')?.addEventListener('click', () => {
+      toggleDropdown('dropdown-authentication-button', 'dropdown-authentication', 'dropdown-authentication-open');
+    });
+  
+    // Navigation
+    document.getElementById("help")?.addEventListener("click", () => {
+      processAjaxData("/app/help")
+    });
+    document.getElementById("docs")?.addEventListener("click", () => {
+      processAjaxData("/app/docs")
     });
     document.getElementById("parks-side")?.addEventListener("click", () => {
       processAjaxData("/app/parks")
     });
     document.getElementById("attractions-side")?.addEventListener("click", () => {
       processAjaxData("/app/attractions")
-    });
-
-    //database
-    document.getElementById('dropdown-sales-button')?.addEventListener('click', () => {
-      const button = document.getElementById('dropdown-sales-button');
-      const dropdown = document.getElementById("dropdown-sales");
-      if (dropdown?.classList.contains('hidden')) {
-        dropdown?.classList.remove('hidden');
-        button?.setAttribute('aria-expanded', 'true');
-      } else {
-        dropdown?.classList.add('hidden');
-        button?.setAttribute('aria-expanded', 'false');
-      }
-    });
-    document.getElementById("stats-page")?.addEventListener("click", () => {
-      processAjaxData("/database/statistics")
-    });
-    document.getElementById("techstats-page")?.addEventListener("click", () => {
-      processAjaxData("/database/technical-information")
-    });
-
-    //last thing (outcommented)
-    document.getElementById('dropdown-authentication-button')?.addEventListener('click', () => {
-      const button = document.getElementById('dropdown-authentication-button');
-      const dropdown = document.getElementById("dropdown-authentication");
-      if (dropdown?.classList.contains('hidden')) {
-        dropdown?.classList.remove('hidden');
-        button?.setAttribute('aria-expanded', 'true');
-      } else {
-        dropdown?.classList.add('hidden');
-        button?.setAttribute('aria-expanded', 'false');
-      }
     });
   }
 }
