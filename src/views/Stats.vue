@@ -29,7 +29,7 @@ export default {
     this.stats.totalVisitorsPerMonth = Math.round(totalVisitors / parks.length);
 
     const totalPrice = parks.reduce((sum: number, park: any) => {
-      const price = parseFloat(park.ticket_price.replace('€', '').replace(',', '.'));
+      const price = parseFloat(park.ticket_price);
       return sum + price;
     }, 0);
     this.stats.averageTicketPrice = parseFloat((totalPrice / parks.length).toFixed(2));

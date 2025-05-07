@@ -42,8 +42,8 @@ export default {
       this.coaster = {
         name: coasterData.name,
         park: parkData.name,
-        length: `${coasterData.length} m`,
-        height: `${coasterData.height} m`,
+        length: `${coasterData.length?.toLocaleString('de-DE')} m`,
+        height: `${coasterData.height?.toLocaleString('de-DE')} m`,
         speed: `${coasterData.velocity} km/h`,
         launch: coasterData.type,
         inversions: coasterData.inversions,

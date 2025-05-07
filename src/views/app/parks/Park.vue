@@ -80,7 +80,7 @@ export default {
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700 dark:text-gray-300 mt-4">
             <div>
               <span class="font-semibold">Ø Besucher / Monat:</span>
-              {{ park.averageVisitorsPerMonth }}
+              {{ park.averageVisitorsPerMonth?.toLocaleString('de-DE') }}
             </div>
             <div>
               <span class="font-semibold">Ø Ticketpreis:</span>
