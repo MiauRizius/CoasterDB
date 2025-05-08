@@ -25,7 +25,7 @@ export default {
           </button>
           <a href="/" class="flex items-center justify-between mr-4">
             <img
-              src="https://raw.githubusercontent.com/MaukiNet/.github/main/assets/4542221e59746b200f7d3d2c96cf9210.png"
+              src="https://www.hwg-wadern.de/fileadmin/hwg/lay/favicons/favicon-96x96.png"
               class="mr-3 h-8 rounded-full"
               alt="CoasterDB Logo"
             />

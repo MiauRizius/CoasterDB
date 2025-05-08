@@ -12,13 +12,16 @@ export default {
             sidebarOpen: false
         }
     },
+    mounted() {
+        // Zustand beim Laden wiederherstellen
+        const savedState = sessionStorage.getItem('sidebarState');
+        this.sidebarOpen = savedState ? savedState === 'open' : false;
+    },
     methods: {
         toggleSidebar() {
             this.sidebarOpen = !this.sidebarOpen;
-            const sidebar = document.getElementById('drawer-navigation');
-            if (sidebar) {
-                sidebar.classList.toggle('-translate-x-full', !this.sidebarOpen);
-            }
+            // Zustand speichern
+            sessionStorage.setItem('sidebarState', this.sidebarOpen ? 'open' : 'closed');
         }
     }
 }

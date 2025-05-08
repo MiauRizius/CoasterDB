@@ -20,7 +20,7 @@ export default {
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="https://coasterdb.miaurizius.de" class="flex items-center">
-                        <img src="https://raw.githubusercontent.com/MaukiNet/.github/main/assets/4542221e59746b200f7d3d2c96cf9210.png" class="mr-3 h-8 rounded-full" alt="Mauki Logo" />
+                        <img src="https://www.hwg-wadern.de/fileadmin/hwg/lay/favicons/favicon-96x96.png" class="mr-3 h-8 rounded-full" alt="Mauki Logo" />
                         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">CoasterDB</span>
                     </a>
                 </div>

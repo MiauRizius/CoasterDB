@@ -5,6 +5,16 @@ export default {
 
   },
   mounted() {
+    // Initialen Zustand setzen basierend auf sessionStorage
+    const savedState = sessionStorage.getItem('sidebarState');
+    if (savedState) {
+      const sidebar = document.getElementById('drawer-navigation');
+      if (sidebar) {
+        sidebar.classList.toggle('-translate-x-full', savedState === 'closed');
+        sidebar.classList.toggle('translate-x-0', savedState === 'open');
+      }
+    }
+
     function processAjaxData(urlPath:string) {
       window.history.pushState({"html":null,"pageTitle":document.title},"", urlPath);
     }
@@ -76,7 +86,7 @@ export default {
 
 <template>
     <aside
-      class="hidden fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform duration-200 ease-in-out bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+      class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform duration-200 ease-in-out bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
       aria-label="Sidenav"
       id="drawer-navigation"
     >

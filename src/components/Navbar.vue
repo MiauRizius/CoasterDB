@@ -14,7 +14,7 @@ export default {
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="/" class="flex items-center">
-                <img src="https://raw.githubusercontent.com/MaukiNet/.github/main/assets/4542221e59746b200f7d3d2c96cf9210.png" class="mr-3 h-6 sm:h-9 rounded-full" alt="MaukiLogo" />
+                <img src="https://www.hwg-wadern.de/fileadmin/hwg/lay/favicons/favicon-96x96.png" class="mr-3 h-6 sm:h-9 rounded-full" alt="MaukiLogo" />
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">CoasterDB</span>
             </a>
             <div class="flex items-center lg:order-2">
